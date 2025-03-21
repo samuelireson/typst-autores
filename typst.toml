@@ -1,0 +1,9 @@
+[package]
+name = "autores"
+version = "0.0.1"
+entrypoint = "src/lib.typ"
+authors = ["Samuel Ireson"]
+license = "MIT"
+description = "Mark the importance of definitions, lemmas, theorems in your document."
+# repository = "https://github.com/EpicEricEE/typst-quick-maths"
+categories = ["utility"]
