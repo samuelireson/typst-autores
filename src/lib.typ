@@ -1,1 +1,1 @@
-#import "autores.typ": autores-init, autores
+#import "autores.typ": autores, proof, resref

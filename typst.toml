@@ -6,4 +6,5 @@ authors = ["Samuel Ireson"]
 license = "MIT"
 description = "Mark the importance of definitions, lemmas, theorems in your document."
 # repository = "https://github.com/EpicEricEE/typst-quick-maths"
+exclude = ["assets", "justfile"]
 categories = ["utility"]
