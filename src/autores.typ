@@ -1,6 +1,13 @@
-#let resrefs = state("resrefs", (:))
-#let curres = state("curres", none)
-#let rescol = state("rescol", (:))
+#let cs = state("autores/colourscheme", color.map.flare)
+#let resrefs = state("autores/resrefs", (:))
+#let curres = state("autores/curres", none)
+#let rescol = state("autores/rescol", (:))
+
+#let autores-init(colour-scheme: color.map.flare, body) = {
+	cs.update(colour-scheme)
+	body
+}
+
 #let resref(id, display: false) = context {
   let dependent-id = curres.get()
   resrefs.update(x => {
@@ -30,13 +37,11 @@
   let final = resrefs.final()
   let dependencies = final.at(repr(id), default: ()).len()
   let dependents = final.values().flatten().filter(x => x == repr(id)).len()
-	let index = calc.floor(255 * (calc.min(dependents, 12) / 12))
-	let col = color.map.flare.at(index)
+	let index = calc.floor((cs.get().len() - 1) * (calc.min(dependents, 12) / 12))
+	let col = cs.get().at(index)
 	rescol.update(x => x + (repr(id): col))
 
   let display = if block-title != "" {block-title}
-  // else if dependencies == 0 [Definition]
-  // else if dependencies == 1 and dependents == 0 [Corollary]
   else [Result]
 
   show figure.where(kind: "result"): it => {
@@ -77,17 +82,3 @@
   ]
   curres.update(none)
 }
-
-#autores(id: <0>, title: "Graph")[
-	This is another definition which is a dependency.
-]
-
-#autores(id: <1>, title: "Metagraph")[
-	This is a definition which is independent.
-]
-
-#autores(id: <2>, title: "Metacategory")[
-	This is a definition which is dependent on #resref(<1>, display: true) and #resref(<0>, display: true)
-]
-
-If we look at #resref(<2>, display: true), we can see that there is a dependence on #resref(<1>, display: true). Dependencies do not have to be visible in the document, for example this sentence may be dependent#resref(<1>) on the first result, without a reference.
