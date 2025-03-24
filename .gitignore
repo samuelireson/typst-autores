@@ -1,3 +1,2 @@
 justfile
 scripts/*
-**/*.pdf
