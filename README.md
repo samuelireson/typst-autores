@@ -56,7 +56,7 @@ You can also customise the colour scheme which is used with,
 
 ## Plans
 
-- [] Add option for colour-scheme steps.
-- [] Add option for scoping results to sections.
-- [] Add ability to resolve dependencies from result.
-- [] Determine theorem naming from dependents and dependencies.
+- [ ] Add option for colour-scheme steps.
+- [ ] Add option for scoping results to sections.
+- [ ] Add ability to resolve dependencies from result.
+- [ ] Determine theorem naming from dependents and dependencies.
